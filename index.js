@@ -26,6 +26,7 @@ async function loadAccounts() {
 }
 
 function copyTrade(trade) {
+  console.log("Trade Obj:", trade);
   const data = {
     symbol: trade.s,
     side: trade.S,
@@ -38,7 +39,7 @@ function copyTrade(trade) {
   if (trade.AP && parseFloat(trade.AP)) data.activationPrice = trade.AP;
   if (trade.cr && parseFloat(trade.cr)) data.callbackRate = trade.cr;
   if (trade.ps) data.positionSide = trade.ps;
-  if (trade.f && trade.f !== "GTC") data.timeInForce = trade.f;
+  if (trade.f /* && trade.f !== "GTC" */) data.timeInForce = trade.f;
 
   return data;
 }
